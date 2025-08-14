@@ -1,0 +1,69 @@
+{
+  "version": "1.0",
+  "description": "ComfyUI 模型预加载配置文件 - 用于在启动时预加载模型到内存中以提高使用速度",
+  "models": {
+    "checkpoints": [
+      {
+        "name": "示例模型.safetensors",
+        "cache_key": "示例模型",
+        "enabled": false,
+        "description": "这是一个示例检查点模型配置，请修改name为实际的模型文件名"
+      },
+      {
+        "name": "dreamshaper_8.safetensors",
+        "cache_key": "",
+        "enabled": true,
+        "description": "这是一个示例检查点模型配置，请修改name为实际的模型文件名"
+      }
+    ],
+    "text_encoders": [
+      {
+        "clip_names": ["clip_l.safetensors"],
+        "type": "stable_diffusion",
+        "device": "default",
+        "cache_key": "",
+        "enabled": false,
+        "description": "单个文本编码器示例 - 适用于SD1.5等模型"
+      },
+      {
+        "clip_names": ["clip_l.safetensors", "clip_g.safetensors"],
+        "type": "sdxl",
+        "device": "default",
+        "cache_key": "",
+        "enabled": false,
+        "description": "双文本编码器示例 - 适用于SDXL等模型"
+      }
+    ],
+    "diffusion_models": [
+      {
+        "model_name": "flux1-dev.safetensors",
+        "weight_dtype": "default",
+        "cache_key": "",
+        "enabled": false,
+        "description": "扩散模型示例 - weight_dtype可选: default, fp8_e4m3fn, fp8_e4m3fn_fast, fp8_e5m2"
+      }
+    ],
+    "vaes": [
+      {
+        "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors",
+        "cache_key": "",
+        "enabled": false,
+        "description": "VAE模型示例 - 请修改vae_name为实际的VAE文件名"
+      }
+    ]
+  },
+  "settings": {
+    "auto_gpu_load": true,
+    "verbose": true
+  },
+  "_comments": {
+    "auto_gpu_load": "是否自动将模型加载到GPU内存中",
+    "verbose": "是否显示详细的加载日志",
+    "cache_key": "自定义缓存键名，留空则自动生成",
+    "enabled": "是否启用此项配置",
+    "clip_names": "文本编码器文件名列表，支持1-3个",
+    "type": "文本编码器类型",
+    "device": "设备类型: default 或 cpu",
+    "vae_name": "VAE模型文件名"
+  }
+}
